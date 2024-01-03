@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package common;
+
+option go_package = "github.com/evgenivanovi/gophkeeper/api/pb/common";
+
+import "common/timestamp.proto";
+
+import "google/protobuf/timestamp.proto";
+
+// __________________________________________________
+
+message Metadata {
+  google.protobuf.Timestamp created_at = 1;
+  optional common.OptionalTimestamp updated_at = 2;
+  optional common.OptionalTimestamp deleted_at = 3;
+}
+
+// __________________________________________________
