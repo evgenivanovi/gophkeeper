@@ -1,0 +1,7 @@
+{
+  "http_enabled": true,
+  "http_port": 8080,
+  "grpc_enabled": true,
+  "grpc_port": 8082,
+  "dsn": "postgres://postgres:postgres@localhost:5432/postgres?sslmode=disable"
+}

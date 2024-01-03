@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "github.com/evgenivanovi/gophkeeper/api/pb/auth";
+
+import "common/metadata.proto";
+
+import "google/protobuf/timestamp.proto";
+
+// __________________________________________________
+
+message SigninRequest {
+  message SigninRequestPayload {
+    Credentials credentials = 1;
+  }
+  SigninRequestPayload payload = 1;
+}
+
+message SigninResponse {
+  message SigninResponsePayload {
+    Session session = 1;
+    User user = 2;
+  }
+  SigninResponsePayload payload = 1;
+}
+
+// __________________________________________________
+
+message SignupRequest {
+  message SignupRequestPayload {
+    Credentials credentials = 1;
+  }
+  SignupRequestPayload payload = 1;
+}
+
+message SignupResponse {
+  message SignupResponsePayload {
+    Session session = 1;
+    User user = 2;
+  }
+  SignupResponsePayload payload = 1;
+}
+
+// __________________________________________________
+
+message Credentials {
+  string username = 1;
+  string password = 2;
+}
+
+message Session {
+  string id = 1;
+  Tokens tokens = 2;
+}
+
+message Tokens {
+  Token access = 1;
+  Token refresh = 2;
+}
+
+message Token {
+  string token = 1;
+  google.protobuf.Timestamp expiration = 2;
+}
+
+// __________________________________________________
+
+message User {
+  int64 id = 1;
+  common.Metadata metadata = 2;
+}
+
+// __________________________________________________
